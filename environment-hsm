@@ -1,0 +1,10 @@
+echo "connector=${YUBIHSM_CONNECTOR}" > /opt/yubihsm2/yubihsm_pkcs11.conf
+
+cat << 'EOF' >> /opt/caml-crush-client/environment-hsm
+# TODO ensure the following property is required. Apparently `canGenerateKeyMsg` isn't show in the Admin GUI, maybe from the CLI it is shown?
+add_to_ejbca_web_properties "cryptotoken.p11.lib.${caml_crush_conf_id}.canGenerateKeyMsg" "YubiHSM 2 Setup Tool must be used to generate keys for this HSM provider."
+add_to_ejbca_web_properties "cryptotoken.p11.lib.${caml_crush_conf_id}.canGenerateKey" "false"
+# 0 is the only slot available for YubiHSM 2. See https://docs.yubico.com/hardware/yubihsm-2/hsm-2-user-guide/hsm2-ejbca-guide.html#configuring-an-existing-ejbca-installation
+add_to_ejbca_web_properties "cryptotoken.p11.lib.${caml_crush_conf_id}.slotlist" "0"
+add_to_ejbca_web_properties "cryptotoken.p11.defaultslot" "0"
+EOF

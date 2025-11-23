@@ -1,0 +1,24 @@
+services:
+  application:
+    build: ../docker-ejbca-hsm-driver-free-base/custom-ejbca-ce-sample
+    environment:
+      - P11SERVER=hsm-driver
+    ports:
+      - "8443:8443"
+    volumes:
+      - hsm-driver:/opt/caml-crush-client
+    depends_on:
+      hsm-driver:
+        condition: service_healthy
+        # If hsm-driver is restarted with `docker compose restart hsm-driver`, restart application as well. Otherwise, apparently there is a broken connection.
+        restart: true
+  
+  hsm-driver:
+    build: .
+    environment:
+      - YUBIHSM_CONNECTOR=http://192.168.10.1:12345
+    volumes:
+      - hsm-driver:/opt/caml-crush-client
+
+volumes:
+  hsm-driver: { }
