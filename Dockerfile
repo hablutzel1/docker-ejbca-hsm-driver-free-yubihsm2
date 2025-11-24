@@ -1,4 +1,4 @@
-FROM ghcr.io/hablutzel1/ejbca-hsm-driver-free-base:0.2.4-al10
+FROM ghcr.io/hablutzel1/ejbca-hsm-driver-free-base:0.3.0-al10
 
 RUN microdnf install -y wget tar gzip
 
