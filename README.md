@@ -12,7 +12,13 @@ $ yubihsm-connector -l 0.0.0.0:12345 -d
 
 ## Running the Sample
 
-Clone the base image repository at the same directory level as this one, since this demo uses a sample EJBCA image included in the base image repository.
+Clone the current repository:
+
+```sh
+git clone https://github.com/hablutzel1/docker-ejbca-hsm-driver-free-yubihsm2.git
+```
+
+Clone the driver base image repository at the same directory level as this one. The demo uses a sample EJBCA image included in the base image repository.
 
 ```sh
 cd ..
