@@ -18,10 +18,9 @@ Clone the current repository:
 git clone https://github.com/hablutzel1/docker-ejbca-hsm-driver-free-yubihsm2.git
 ```
 
-Clone the driver base image repository at the same directory level as this one. The demo uses a sample EJBCA image included in the base image repository.
+And clone the driver base image repository at the same directory level (the current demo uses a sample EJBCA image included in the base image repository):
 
 ```sh
-cd ..
 git clone https://github.com/hablutzel1/docker-ejbca-hsm-driver-free-base.git
 ```
 
